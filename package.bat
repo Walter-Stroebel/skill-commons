@@ -1,0 +1,7 @@
+@echo off
+mkdir skills 2>nul
+powershell Compress-Archive -Force -Path mindmap\SKILL.md,mindmap\layout.py,mindmap\references -DestinationPath skills\mindmap.skill
+powershell Compress-Archive -Force -Path session-json\SKILL.md -DestinationPath skills\session-json.skill
+powershell Compress-Archive -Force -Path enshittification-detector\SKILL.md -DestinationPath skills\enshittification-detector.skill
+powershell Compress-Archive -Force -Path false-binary\SKILL.md -DestinationPath skills\false-binary.skill
+echo Built: skills\*.skill
