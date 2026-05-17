@@ -37,18 +37,32 @@ After any state change, rewrite session.json before running layout.
 
 ---
 
-## Step 2 — Run layout.py
+## Step 2 — Prepare layout.py
+
+The bundled layout.py lives at `/mnt/skills/user/mindmap/layout.py`.
+Copy it to the working directory before use:
 
 ```bash
-python /home/claude/mindmap-skill/mindmap/layout.py /home/claude/session.json
+cp /mnt/skills/user/mindmap/layout.py /home/claude/layout.py
+```
+
+Do this once per session. Do NOT rewrite or regenerate layout.py — use the bundled version.
+Do NOT run it from `/mnt/skills/user/mindmap/` directly — copy first, run from `/home/claude/`.
+
+---
+
+## Step 3 — Run layout.py
+
+```bash
+python /home/claude/layout.py /home/claude/session.json
 ```
 
 Parse the full output. Use:
 - `coords[id].x/y/w/h` — rect placement
 - `coords[id].cx/cy` — edge endpoints and text anchoring
 - `viewbox_height` — SVG viewBox height
-- `font_title` — scaled title font size (use this, not hardcoded 14px)
-- `font_sub` — scaled subtitle font size (use this, not hardcoded 11px)
+- `font_title` — scaled title font size (use this, not hardcoded values)
+- `font_sub` — scaled subtitle font size (use this, not hardcoded values)
 - `warnings` — log them; abort if overlaps are present
 
 **Do not compute positions yourself. Do not hardcode font sizes.
@@ -65,7 +79,7 @@ Trust all numbers from layout.py.**
 
 ---
 
-## Step 3 — Emit SVG
+## Step 4 — Emit SVG
 
 Output this line first as markdown:
 
@@ -81,21 +95,21 @@ font sizes and break in dark mode. Instead use the explicit CSS pattern below.
 Define these classes in a `<style>` block inside `<defs>`:
 
 ```css
-.nr { fill: #7F77DD; stroke: #534AB7; }   /* root — purple mid */
-.nb { fill: #1D9E75; stroke: #0F6E56; }   /* branch — teal mid */
-.na { fill: #BA7517; stroke: #854F0B; }   /* branch — amber (constraint) */
-.nd { fill: #E24B4A; stroke: #A32D2D; }   /* branch — red (warning/scary) */
-.nc { fill: var(--color-background-secondary); stroke: var(--color-border-secondary); }  /* child — neutral */
+.nr { fill: #7F77DD; stroke: #534AB7; }
+.nb { fill: #1D9E75; stroke: #0F6E56; }
+.na { fill: #BA7517; stroke: #854F0B; }
+.nd { fill: #E24B4A; stroke: #A32D2D; }
+.nc { fill: var(--color-background-secondary); stroke: var(--color-border-secondary); }
 @media (prefers-color-scheme: dark) {
   .nr { fill: #3C3489; stroke: #AFA9EC; }
   .nb { fill: #085041; stroke: #5DCAA5; }
   .na { fill: #633806; stroke: #EF9F27; }
   .nd { fill: #791F1F; stroke: #F09595; }
 }
-.tt { fill: var(--color-text-primary); font-weight: 500; }   /* child title */
-.ts { fill: var(--color-text-secondary); }                   /* child subtitle */
-.tw  { fill: #ffffff; font-weight: 500; }                    /* coloured node title */
-.tw2 { fill: rgba(255,255,255,0.75); }                       /* coloured node subtitle */
+.tt { fill: var(--color-text-primary); font-weight: 500; }
+.ts { fill: var(--color-text-secondary); }
+.tw  { fill: #ffffff; font-weight: 500; }
+.tw2 { fill: rgba(255,255,255,0.75); }
 ```
 
 Coloured nodes (root, branches): white text always — `.tw` title, `.tw2` subtitle.
@@ -170,8 +184,6 @@ Child (neutral, high contrast at any size):
 | Warning / scary / stop | `.nd` (red) |
 | Root only | `.nr` (purple) |
 
-Use colour to encode meaning, not sequence.
-
 ### Hard rules
 
 - HTML wrapper mandatory. Always.
@@ -198,7 +210,7 @@ Plain language. No jargon. Red nodes get reassuring "what do I do if..." questio
 
 ---
 
-## Step 4 — After
+## Step 5 — After
 
 One sentence: what the map shows, which node to click first.
 
@@ -208,13 +220,14 @@ One sentence: what the map shows, which node to click first.
 
 - **Hub-and-spoke is not a mind map.** Children must fan into gaps between spokes.
 - **Fixed position tables break.** layout.py computes positions; never hardcode them.
+- **Never regenerate layout.py.** Copy from `/mnt/skills/user/mindmap/layout.py`. The bundled version is tested and correct. Improvised versions will diverge.
 - **Font sizes must scale.** Use font_title/font_sub from layout.py, not hardcoded values.
-- **Outer node font_sub goes down 1pt extra** — at small scales subtitles are optimistic; layout.py already applies a -1pt offset via FONT_SUB=11 (not 12).
+- **Outer node font_sub goes down 1pt extra** — layout.py applies FONT_SUB=11 (not 12).
 - **Overlap checker is load-bearing.** Always check warnings before rendering.
 - **gap_frac must shrink with more branches** or children collide at the bottom.
 - **scale-to-fit after placement**, not before — place at natural radii, then scale.
-- **Never use c-* colour classes on nodes.** They break with scaled fonts and dark mode. Use explicit CSS classes with @media dark mode overrides (see colour system above).
-- **Child nodes need neutral fills.** Coloured fills lose contrast at small font sizes. `.nc` class + CSS variable text is readable at any size in any mode.
+- **Never use c-* colour classes on nodes.** They break with scaled fonts and dark mode.
+- **Child nodes need neutral fills.** `.nc` class + CSS variable text is readable at any size in any mode.
 - **White text on coloured nodes.** `.tw` / `.tw2` — always white, regardless of mode.
 - **Screen coords only, always.** y=0 top. Never describe "bottom" when you mean high-y.
 - **HTML wrapper non-negotiable.** Raw SVG silently breaks script execution.
