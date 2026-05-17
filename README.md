@@ -30,7 +30,7 @@ Some skills include supporting code (like `layout.py` in the mindmap skill) that
 
 Anthropic's Skills™ are a better option than OpenAI's GPTs™, in this maintainer's opinion. Still quite rough around the edges — no readme field, no dependency declarations, no Linux desktop app — but the format is solid and the integration works.
 
-For Claude.ai, skills are packaged as `.skill` files — standard zip archives with a `.skill` extension containing the skill directory. Install them via **Settings → Profile → Custom Skills**, or drag into any Claude chat.
+For Claude.ai, skills are packaged as `.skill` files — standard zip archives with a `.skill` extension containing the skill directory. Install them via **Customize →  Skills**.
 
 Pre-built `.skill` files for all skills in this repo are available in [Releases](../../releases). Download and install. The source in this repo is what's inside them.
 
