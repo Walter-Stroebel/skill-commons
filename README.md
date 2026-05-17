@@ -9,8 +9,7 @@ A skill is a structured markdown document that extends LLM behavior in a well-de
 That's the entire mechanism. No code execution. No API calls. No dependencies. A skill is a document that teaches an LLM a capability it can then apply to your session.
 
 Skills in this repo are:
-- **LLM-agnostic** — written for any model that can read markdown and act on instructions
-- **Portable** — copy a `SKILL.md` into any context window and it works
+- **LLM-agnostic in intent** — written as instructions any model can read
 - **Auditable** — you can read exactly what the skill instructs the model to do
 - **Composable** — skills can depend on other skills, explicitly documented
 
@@ -29,7 +28,9 @@ Some skills include supporting code (like `layout.py` in the mindmap skill) that
 
 ## Claude-specific installation
 
-For Claude.ai, skills are packaged as `.skill` files — these are standard zip archives with a `.skill` extension containing the skill directory. Install them via **Settings → Profile → Custom Skills**, or drag into any Claude chat.
+Anthropic's Skills™ are a better option than OpenAI's GPTs™, in this maintainer's opinion. Still quite rough around the edges — no readme field, no dependency declarations, no Linux desktop app — but the format is solid and the integration works.
+
+For Claude.ai, skills are packaged as `.skill` files — standard zip archives with a `.skill` extension containing the skill directory. Install them via **Settings → Profile → Custom Skills**, or drag into any Claude chat.
 
 Pre-built `.skill` files for all skills in this repo are available in [Releases](../../releases). Download and install. The source in this repo is what's inside them.
 
@@ -59,9 +60,13 @@ mindmap → requires → session-json
 
 Install session-json before mindmap. Everything else is standalone.
 
-## On local models
+## Platform notes
 
-Include the `SKILL.md` content in your system prompt or context window. The model will apply the skill when the trigger description matches the user's request. No packaging needed.
+All skills in this repo are developed and tested on Claude™ (Sonnet 4.6). That is the supported platform.
+
+**Other models and local LLMs:** The skill *text* is readable by any model. Simpler skills like `enshittification-detector` and `false-binary` are largely self-contained instructions — copy the contents of `SKILL.md` and paste into any session or system prompt. Whether the model follows them well depends entirely on that model's instruction-following capability. No guarantees, no testing, no support.
+
+Skills that depend on platform features — the `mindmap` skill runs Python, calls platform-specific rendering functions, and uses a chat callback — are Claude-specific and will not port without significant rework.
 
 ## Threat model
 
