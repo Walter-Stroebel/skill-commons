@@ -10,7 +10,7 @@ Skills are plain text. They work on Claude, on local models, on whatever can rea
 
 ## What a skill is
 
-A skill is a markdown file with a YAML frontmatter block:
+A skill is a markdown file with a YAML block:
 
 ```yaml
 ---
@@ -22,6 +22,8 @@ description: "When to use this skill and what it does."
 The body contains instructions. The LLM reads it and follows them. That's the entire mechanism.
 
 The `description` field is the trigger — it tells the model when to consult the skill. Make it specific and honest.
+
+The format used is compatible with Claude's native skill system and should be portable to any LLM that accepts markdown in context.
 
 ## Threat model
 
@@ -54,4 +56,5 @@ The enshittification-detector applies to this repo as much as anywhere else. If 
 
 ## Contact
 
-info@infcomtec.nl
+Via GitHub, at least for now. I will respond to interesting offers but do not care to be a spam magnet.
+
