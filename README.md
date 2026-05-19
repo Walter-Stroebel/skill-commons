@@ -51,6 +51,7 @@ Output goes to `skills/` (gitignored — these are build artifacts, not source).
 | [session-json](session-json/SKILL.md) | Extracts the current session's concept hierarchy as a minimal JSON topology file. Drives the mindmap skill. Useful standalone. |
 | [enshittification-detector](enshittification-detector/SKILL.md) | Filters technology claims, vendor narratives, and consensus recommendations for hidden dependencies, mismatched threat models, and commercial interests dressed as best practice. |
 | [false-binary](false-binary/SKILL.md) | Detects false either/or framings and surfaces the third option — both, sequence, or transcendence. |
+| [struggle](struggle/SKILL.md) | Slash-command skill for working through problems with methodological rigor. Six methods: Dialectical, Socratic, Apophatic, Genealogical, Falsification, Compression. |
 
 ## Skill dependencies
 
