@@ -5,4 +5,5 @@ cd session-json && zip -r ../skills/session-json.skill SKILL.md && cd ..
 cd enshittification-detector && zip -r ../skills/enshittification-detector.skill SKILL.md && cd ..
 cd false-binary && zip -r ../skills/false-binary.skill SKILL.md && cd ..
 cd struggle && zip -r ../skills/struggle.skill SKILL.md && cd ..
+cd multilingual-search && zip -r ../skills/multilingual-search.skill SKILL.md && cd ..
 echo "Built: skills/*.skill"
