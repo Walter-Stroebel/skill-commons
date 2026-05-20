@@ -6,4 +6,5 @@ powershell Compress-Archive -Force -Path enshittification-detector\SKILL.md -Des
 powershell Compress-Archive -Force -Path false-binary\SKILL.md -DestinationPath skills\false-binary.skill
 powershell Compress-Archive -Force -Path struggle\SKILL.md -DestinationPath skills\struggle.skill
 powershell Compress-Archive -Force -Path multilingual-search\SKILL.md -DestinationPath skills\multilingual-search.skill
+powershell Compress-Archive -Force -Path numeracy-triage\SKILL.md -DestinationPath skills\numeracy-triage.skill
 echo Built: skills\*.skill

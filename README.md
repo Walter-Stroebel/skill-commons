@@ -53,6 +53,7 @@ Output goes to `skills/` (gitignored — these are build artifacts, not source).
 | [false-binary](false-binary/SKILL.md) | Detects false either/or framings and surfaces the third option — both, sequence, or transcendence. |
 | [struggle](struggle/SKILL.md) | Slash-command skill for working through problems with methodological rigor. Six methods: Dialectical, Socratic, Apophatic, Genealogical, Falsification, Compression. |
 | [multilingual-search](multilingual-search/SKILL.md) | Searches a topic across multiple languages to surface coverage gaps, politically filtered results, and concepts that only exist natively in certain linguistic corpora. |
+| [numeracy-triage](numeracy-triage/SKILL.md) | Diagnostic protocol for numerical claims — establishes claim type and structural integrity before any calculation is attempted. Not a calculator; an epistemology-of-numbers triage tool. |
 
 ## Skill dependencies
 
