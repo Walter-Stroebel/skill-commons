@@ -7,4 +7,5 @@ cd false-binary && zip -r ../skills/false-binary.skill SKILL.md && cd ..
 cd struggle && zip -r ../skills/struggle.skill SKILL.md && cd ..
 cd multilingual-search && zip -r ../skills/multilingual-search.skill SKILL.md && cd ..
 cd numeracy-triage && zip -r ../skills/numeracy-triage.skill SKILL.md && cd ..
+cd controlled-cot && zip -r ../skills/controlled-cot.skill SKILL.md && cd ..
 echo "Built: skills/*.skill"

@@ -7,4 +7,5 @@ powershell Compress-Archive -Force -Path false-binary\SKILL.md -DestinationPath 
 powershell Compress-Archive -Force -Path struggle\SKILL.md -DestinationPath skills\struggle.skill
 powershell Compress-Archive -Force -Path multilingual-search\SKILL.md -DestinationPath skills\multilingual-search.skill
 powershell Compress-Archive -Force -Path numeracy-triage\SKILL.md -DestinationPath skills\numeracy-triage.skill
+powershell Compress-Archive -Force -Path controlled-cot\SKILL.md -DestinationPath skills\controlled-cot.skill
 echo Built: skills\*.skill
