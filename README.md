@@ -55,6 +55,7 @@ Output goes to `skills/` (gitignored — these are build artifacts, not source).
 | [multilingual-search](multilingual-search/SKILL.md) | Searches a topic across multiple languages to surface coverage gaps, politically filtered results, and concepts that only exist natively in certain linguistic corpora. |
 | [numeracy-triage](numeracy-triage/SKILL.md) | Diagnostic protocol for numerical claims — establishes claim type and structural integrity before any calculation is attempted. Not a calculator; an epistemology-of-numbers triage tool. |
 | [controlled-cot](controlled-cot/SKILL.md) | Structured chain-of-thought as a discovery instrument. Explicitly contracted mode: user seeds a concept, grants departure license, model traverses consequence space without interruption until a genuine wall, closure, or stable result set. |
+| [java-style](java-style/SKILL.md) | Governs how Claude writes Java code — proactive default idiom for writing, reviewing, or discussing Java, favoring explicit named types and the JVM's mature ecosystem over escape-hatch scaffolding. |
 
 ## Skill dependencies
 
