@@ -43,6 +43,18 @@ package.bat            # Windows
 
 Output goes to `skills/` (gitignored — these are build artifacts, not source).
 
+## Claude Code installation
+
+Claude Code (the CLI) has its own, separate skill system — unrelated to Claude.ai's Customize → Skills UI above. It reads unpacked skill directories (not `.skill` zip files) from `~/.claude/skills/<skill-name>/`, so it picks up skills globally across every project.
+
+To install a skill from this repo:
+
+```bash
+cp -r skill-name ~/.claude/skills/skill-name
+```
+
+Any skill here works, but explicit-invocation skills (`struggle`, `false-binary`, `numeracy-triage`, etc.) are only useful if you'll actually invoke them by name or slash command; proactive skills like `java-style` are worth installing globally since Claude Code applies them automatically once present.
+
 ## Current skills
 
 | Skill | What it does |
